@@ -143,7 +143,7 @@ stud_config * config_new (void) {
   r->SYSLOG_FACILITY    = LOG_DAEMON;
   r->TCP_KEEPALIVE_TIME = 3600;
   r->DAEMONIZE          = 0;
-  r->PREFER_SERVER_CIPHERS = 0;
+  r->PREFER_SERVER_CIPHERS = 1;
 
   return r;
 }
@@ -852,7 +852,7 @@ void config_print_usage_fd (char *prog, stud_config *cfg, FILE *out) {
   fprintf(out, "      --ssl                   SSLv3 (implies no TLSv1)\n");
   fprintf(out, "  -c  --ciphers=SUITE         Sets allowed ciphers (Default: \"%s\")\n", config_disp_str(cfg->CIPHER_SUITE));
   fprintf(out, "  -e  --ssl-engine=NAME       Sets OpenSSL engine (Default: \"%s\")\n", config_disp_str(cfg->ENGINE));
-  fprintf(out, "  -O  --prefer-server-ciphers Prefer server list order\n");
+  fprintf(out, "  -O  --prefer-server-ciphers Prefer server list order (Default: \"%s\")\n", config_disp_bool(cfg->CFG_PREFER_SERVER_CIPHERS));
   fprintf(out, "\n");
   fprintf(out, "SOCKET:\n");
   fprintf(out, "\n");
